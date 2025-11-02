@@ -23,3 +23,12 @@ def send_payment_confirmation_email(payment_id):
         return f"Payment confirmation email sent for {payment.transaction_id}"
     except Payment.DoesNotExist:
         return f"Payment with ID {payment_id} not found."
+
+
+def send_booking_email(email, booking_id):
+    subject = "Booking Confirmation"
+    message = f"Your booking with ID {booking_id} was successful!"
+    sender = "no-reply@travelapp.com"
+
+    send_mail(subject, message, sender, [email])
+    return "Email sent"
